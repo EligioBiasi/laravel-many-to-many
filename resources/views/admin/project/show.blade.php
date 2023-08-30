@@ -11,6 +11,14 @@
                   <h2>
                     {{$project->title}}--{{$project->type->name}}
                   </h2>
+                  @if (count($project->tags)>0)
+                  <h3>
+                    @foreach ($project->tags as $tag)
+                        {{$tag->name}}--
+                    @endforeach
+                  </h3>
+                  @endif
+                  
                   <h6 class="card-text">
                     {{$project->slug}}
                   </h6>
