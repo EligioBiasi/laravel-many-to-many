@@ -14,8 +14,7 @@
                   <h6 class="card-text">
                     {{$project->slug}}
                   </h6>
-                  <a href="" class="btn btn-sm btn-success">View</a>
-                  <a href="{{route('admin.project.edit', $project)}}" class="btn btn-sm btn-warning">Modify</a>
+                  <a href="{{route('admin.project.index', $project)}}" class="btn btn-sm btn-success">View</a>
                   <form action="{{route('admin.project.destroy', $project)}}" class="d-inline-block" method="POST">
                     @csrf
                     @method('DELETE')

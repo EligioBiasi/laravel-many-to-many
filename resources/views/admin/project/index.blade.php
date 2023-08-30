@@ -26,8 +26,8 @@
                         {{$project->slug}}
                       </td>
                       <td>
-                        <a href="" class="btn btn-sm btn-success">View</a>
-                        <a href="" class="btn btn-sm btn-warning">Modify</a>
+                        <a href="{{route('admin.project.show', $project)}}" class="btn btn-sm btn-success">View</a>
+                        <a href="{{route('admin.project.edit', $project)}}" class="btn btn-sm btn-warning">Modify</a>
                         <form action="{{route('admin.project.destroy', $project)}}" class="d-inline-block" method="POST">
                           @csrf
                           @method('DELETE')
