@@ -12,6 +12,17 @@
                     <input type="text" class="form-control" id="title" placeholder="write the title here" name="title" value="{{old('title', '')}}">
                 </div>
                 <div class="mb-3">
+                    <label for="tags" class="form-check-label d-block mb-2">Select your Tags:</label>
+                    @foreach ($tags as $tag)    
+                        <button>
+                            <input type="checkbox" name="tags" id="tags" class="form-check-input">
+                            <label for="tags" class="form-check-label">
+                                {{$tag->name}}
+                            </label>
+                        </button>
+                    @endforeach
+                </div>
+                <div class="mb-3">
                     <label for="image" class="form-label">image</label>
                     {{-- <input type="text" class="form-control" id="image" placeholder="insert your image path here" name="image"> --}}
                     <input type="file" class="form-control" id="image" placeholder="insert your image path here" name="image" value="{{old('image', '')}}">
