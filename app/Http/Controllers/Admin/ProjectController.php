@@ -39,12 +39,17 @@ class ProjectController extends Controller
 
         $data = $request->validate([
             'title' => ['required','min:3', 'max:255'],
-            'image' => ['file'],
+            'image' => ['required','file'],
             'description' => ['required', 'min:10'],
+            'tags'=>['exists:tags,id',],
         ]);
 
         $data['slug'] = Str::of($data['title'])->slug('-');
         $newProject = Project::create($data);
+
+        if($request->hasFile('tags')){
+            $newProject->tags()->sync($request->tags);
+        }
 
         return redirect()->route('admin.project.index');
     }
