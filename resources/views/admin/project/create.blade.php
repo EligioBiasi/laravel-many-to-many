@@ -15,7 +15,7 @@
                     <label for="tags" class="form-check-label d-block mb-2">Select your Tags:</label>
                     @foreach ($tags as $tag)    
                         <button>
-                            <input type="checkbox" name="tags" id="tags" class="form-check-input">
+                            <input type="checkbox" name="tags[]" id="tags" class="form-check-input" value="{{$tag->id}}">
                             <label for="tags" class="form-check-label">
                                 {{$tag->name}}
                             </label>
