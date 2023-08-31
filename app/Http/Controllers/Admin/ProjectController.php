@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Tag;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -25,8 +26,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $types=Type::all();
         $tags= Tag::all();
-        return view('admin.project.create', compact('tags'));
+        return view('admin.project.create', compact('tags','types'));
     }
 
     /**
@@ -41,9 +43,9 @@ class ProjectController extends Controller
             'title' => ['required','min:3', 'max:255'],
             'image' => ['required','file'],
             'description' => ['required', 'min:10'],
-            'tags'=>['exists:tags,id',],
+            'tags'=>['exists:tags,id'],
+            'type_id'=>['exists:types,id'],
         ]);
-
         $data['slug'] = Str::of($data['title'])->slug('-');
         $newProject = Project::create($data);
 
