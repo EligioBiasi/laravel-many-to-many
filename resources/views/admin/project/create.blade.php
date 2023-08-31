@@ -23,6 +23,15 @@
                     @endforeach
                 </div>
                 <div class="mb-3">
+                    <select name="type_id" id="type_id" class="form-select">
+                        @foreach ($types as $type)
+                            <option value="{{$type->id}}">
+                                {{$type->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label for="image" class="form-label">image</label>
                     {{-- <input type="text" class="form-control" id="image" placeholder="insert your image path here" name="image"> --}}
                     <input type="file" class="form-control" id="image" placeholder="insert your image path here" name="image" value="{{old('image', '')}}">
